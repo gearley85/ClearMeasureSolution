@@ -15,6 +15,8 @@ namespace RemainderOutputBuilder
             _firstOutput = firstOutput;
             _secondOutput = secondOutput;
         }
+
+        //builds a result set that includes the int and expected outputs
         public List<Outputs> GetOutputs()
         {
             var resultSet = new List<Outputs>();
@@ -29,7 +31,7 @@ namespace RemainderOutputBuilder
                 {
                     resultSet.Add(new Outputs { Key = i, StringVal = $"{_firstOutput}" });
                 }
-                //divisiable by 5
+                //divisible by 5
                 else if (i % 5 == 0)
                 {
                     resultSet.Add(new Outputs { Key = i, StringVal = $"{_secondOutput}" });
@@ -43,6 +45,7 @@ namespace RemainderOutputBuilder
             return resultSet;
         }
 
+        //validates user input for outliers
         private int CheckUpperLimitOutliers(int val)
         {
             return (val < 0) ? 0 : (val > int.MaxValue) ? int.MaxValue : val;
